@@ -4,12 +4,14 @@ import { getStorage } from 'firebase/storage';
 import { getAuth } from 'firebase/auth'; 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCiW0zeXq9UzxD2-59HWBLQLytHy5RaSp0",
-  authDomain: "starbilling-8a6b1.firebaseapp.com",
-  projectId: "starbilling-8a6b1",
-  storageBucket: "starbilling-8a6b1.appspot.com",
-  messagingSenderId: "81943901473",
-  appId: "1:81943901473:web:79b0f2650b75465d0efa60"                                                                                                                    
+  
+      
+  apiKey: "AIzaSyD4nUT-gdYQH4wHc0DWDM059afkM35awLg",
+  authDomain: "billingsoftware1-63ac7.firebaseapp.com",
+  projectId: "billingsoftware1-63ac7",
+  storageBucket: "billingsoftware1-63ac7.appspot.com",
+  messagingSenderId: "880378082734",
+  appId: "1:880378082734:web:6fa69ee70c13ab2b41443f"                                                                                                        
 };
 
 const app = initializeApp(firebaseConfig);

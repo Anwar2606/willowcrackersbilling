@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../firebase"; // Adjust the path to your firebase.js
+import { db } from "../firebase"; 
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import "./SalesComparisonChart.css"; // Adjust path to your CSS file
+import "./SalesComparisonChart.css"; 
 
 const SalesComparisonChart = () => {
   const [salesData, setSalesData] = useState([]);
@@ -50,13 +50,12 @@ const SalesComparisonChart = () => {
     fetchSalesData();
   }, []);
 
-  // Helper function to calculate total amount from unique invoices
   const calculateTotalAmount = (snapshot) => {
     const uniqueInvoices = new Set();
     let totalAmount = 0;
 
     snapshot.forEach(doc => {
-      const invoiceNumber = doc.data().invoiceNumber; // Adjust based on your actual field name
+      const invoiceNumber = doc.data().invoiceNumber; 
       const total = parseFloat(doc.data().totalAmount);
 
       if (!uniqueInvoices.has(invoiceNumber)) {

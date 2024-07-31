@@ -8,6 +8,7 @@ const Grid = () => {
   const [numberOfProducts, setNumberOfProducts] = useState(0);
   const [todayTotalAmount, setTodayTotalAmount] = useState(0);
   const [todayNumberOfBills, setTodayNumberOfBills] = useState(0);
+  const [todayNumberOfCustomerBills, setTodayNumberOfCustomerBills] = useState(0);
 
   useEffect(() => {
     // Fetch number of bills
@@ -29,24 +30,31 @@ const Grid = () => {
       setNumberOfProducts(querySnapshot.size); // Get number of documents in 'products' collection
     };
 
-    // Fetch today's total amount and number of unique bills
+    // Fetch today's total amount, number of unique bills, and number of customer bills
     const fetchTodayMetrics = async () => {
       const today = new Date();
       const startOfDay = new Date(today.setHours(0, 0, 0, 0));
       const endOfDay = new Date(today.setHours(23, 59, 59, 999));
 
-      const todayMetricsQuery = query(
+      const todayBillingQuery = query(
         collection(db, 'billing'),
         where('date', '>=', startOfDay),
         where('date', '<=', endOfDay)
       );
 
+      const todayCustomerBillingQuery = query(
+        collection(db, 'customerBilling'),
+        where('date', '>=', startOfDay),
+        where('date', '<=', endOfDay)
+      );
+
       try {
-        const querySnapshot = await getDocs(todayMetricsQuery);
+        // Fetch and process billing metrics
+        const billingSnapshot = await getDocs(todayBillingQuery);
         let totalAmount = 0;
         const uniqueInvoiceNumbers = new Set();
 
-        querySnapshot.forEach(doc => {
+        billingSnapshot.forEach(doc => {
           const docData = doc.data();
           const invoiceNumber = docData.invoiceNumber; // Assuming 'invoiceNumber' is the unique field
 
@@ -58,6 +66,17 @@ const Grid = () => {
 
         setTodayTotalAmount(totalAmount.toFixed(2)); // Set totalAmount rounded to 2 decimal places
         setTodayNumberOfBills(uniqueInvoiceNumbers.size); // Set number of unique bills for today
+
+        // Fetch and process customer billing metrics
+        const customerBillingSnapshot = await getDocs(todayCustomerBillingQuery);
+        let customerBillCount = 0;
+
+        customerBillingSnapshot.forEach(doc => {
+          customerBillCount++; // Count the number of documents
+        });
+
+        setTodayNumberOfCustomerBills(customerBillCount); // Set number of customer bills for today
+
       } catch (error) {
         console.error('Error fetching today metrics: ', error);
       }
@@ -85,6 +104,10 @@ const Grid = () => {
       <div className="metric-card atm-card">
         <h2 className="animated-text">Today's Number of Bills</h2>
         <p className="animated-text">{todayNumberOfBills}</p>
+      </div>
+      <div className="metric-card atm-card">
+        <h2 className="animated-text">Today's Number of Customer Bills</h2>
+        <p className="animated-text">{todayNumberOfCustomerBills}</p>
       </div>
     </div>
   );

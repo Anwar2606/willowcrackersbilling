@@ -49,7 +49,7 @@ const Login = () => {
                     <div className="logo">
                         <img src={Logo} height="160px" width="190px" alt="Logo" />
                     </div>
-                    <h1 className="login-title">STAR PYRO PARK</h1>
+                    <h1 className="login-title">WILLOW CRACKERS</h1>
                     <p className="body-text">Billing Software</p>
 
                     <div className="sign-in-seperator">

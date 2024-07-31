@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { db } from '../firebase'; 
 import { collection, addDoc } from 'firebase/firestore';
-import './Addproduct.css'; // Import the CSS file
-
+import './Addproduct.css'; 
 const AddProduct = () => {
   const [sno, setSno] = useState('');
   const [name, setName] = useState('');
@@ -20,11 +19,9 @@ const AddProduct = () => {
         saleprice: parseFloat(saleprice),
         regularprice: parseFloat(regularprice),
         quantity: parseInt(quantity),
-        category, // Save the selected category to Firestore
+        category, 
         discount: 0,
       });
-
-      // Clear form fields and state
       setSno('');
       setName('');
       setSalePrice('');

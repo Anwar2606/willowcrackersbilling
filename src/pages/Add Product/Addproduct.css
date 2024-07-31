@@ -1,4 +1,3 @@
-/* styles.css */
 .custom-select {
   width: 95%;
   padding: 8px;
@@ -9,13 +8,10 @@
   color: #333;
   outline: none;
   transition: border-color 0.3s ease;
-
-  /* For better appearance */
-  -webkit-appearance: none; /* Chrome, Safari, Opera */
-  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 }
-
 .custom-select:focus {
   border-color: #007bff;
 }
@@ -23,17 +19,14 @@
 .custom-select option {
   padding: 10px;
 }
-
-
-  .add-product-page {
+.add-product-page {
     background-color: #f6f6f6;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .add-product-container {
+} 
+.add-product-container {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;

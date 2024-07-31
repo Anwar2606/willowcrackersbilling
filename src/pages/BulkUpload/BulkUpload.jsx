@@ -41,9 +41,6 @@ const BulkUpload = () => {
         console.error("Missing field(s) in product: ", product);
         continue;
       }
-
-
-
       const productData = {
         sno:product.sno,
         name: product.name.trim(),
@@ -52,33 +49,27 @@ const BulkUpload = () => {
         category:product.category
         
       };
-
       if (isNaN(productData.saleprice) || isNaN(productData.regularprice)) {
         console.error("Invalid price or quantity for product:", product);
         continue;
       }
-
       try {
         await addDoc(productCollection, productData);
       } catch (error) {
         console.error("Error adding document: ", error);
       }
     }
-
     setProducts([]);
     setFileName("");
     setUploadProgress(0);
   };
-
   const handleDragOver = (event) => {
     event.preventDefault();
     setDragging(true);
   };
-
   const handleDragLeave = () => {
     setDragging(false);
   };
-
   const handleDrop = (event) => {
     event.preventDefault();
     setDragging(false);
@@ -86,7 +77,6 @@ const BulkUpload = () => {
     setFile(file);
     setFileName(file.name);
   };
-
   return (
     <div className="container">
       <h1 className="header">Bulk Upload Products</h1>

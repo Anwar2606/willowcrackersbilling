@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../firebase"; // Adjust the path to your firebase.js
+import { db } from "../firebase"; 
 import { collection, query, where, getDocs, Timestamp } from "firebase/firestore";
 import "./Dashboard.css";
 
@@ -17,7 +17,6 @@ const Cards = () => {
       const startTimestamp = Timestamp.fromDate(startOfDay);
       const endTimestamp = Timestamp.fromDate(endOfDay);
 
-      // Fetch number of bills
       const billsQuery = query(
         collection(db, "billing"), // Change 'billing' to your collection name
         where("date", ">=", startTimestamp),
@@ -26,15 +25,12 @@ const Cards = () => {
       const billsSnapshot = await getDocs(billsQuery);
       setBillsCount(billsSnapshot.size);
 
-      // Fetch today's sales amount
       const todaySalesAmount = billsSnapshot.docs.reduce((total, doc) => total + doc.data().totalAmount, 0);
       setTodaySales(todaySalesAmount);
 
-      // Fetch number of products
       const productsSnapshot = await getDocs(collection(db, "products"));
       setProductsCount(productsSnapshot.size);
 
-      // Fetch number of customers
       const customersSnapshot = await getDocs(collection(db, "customers"));
       setCustomersCount(customersSnapshot.size);
     };
