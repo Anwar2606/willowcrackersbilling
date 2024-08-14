@@ -180,3 +180,151 @@
 .custom-date:hover .react-datepicker__day {
   transition: background-color 0.3s ease;
 }
+/* Homepage.css */
+
+/* Container for grid layout and overall styling */
+/* Container for grid layout and overall styling */
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+  padding: 20px;
+}
+
+/* Grid container styling */
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Adjust the ratio of columns as needed */
+  gap: 20px;
+  width: 100%;
+  justify-content: center; /* Center align the grid items horizontally */
+}
+
+/* Styling for each chart and progress component */
+.sales-comparison-chart,
+.revenue-progress {
+  background: #ffffff; /* Ensure both have the same background color */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  width: 90%; /* Ensure both take full width of their grid cell */
+  height: 500px; /* Set the same height for both components */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align content horizontally */
+  justify-content: center; /* Center-align content vertically */
+}
+/* Container for date and button alignment */
+.date-button-container {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  gap: 10px; /* Space between date picker and button */
+  margin-top: 20px; /* Space above the container */
+}
+
+/* Adjust DatePicker width if needed */
+.custom-date {
+  margin: 0; /* Remove margin to align it properly */
+  max-width: 200px; /* Adjust as needed */
+}
+
+/* Heading styling */
+.dateTitle {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 24px;
+  font-family: 'Arial', sans-serif;
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Ensure heading takes full width of the container */
+}
+
+/* DatePicker styling */
+.custom-date {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%; /* Ensure DatePicker takes full width */
+  max-width: 500px; /* Optional: Set a max-width for better control */
+}
+
+/* Button styling */
+.download-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4d4dff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%; /* Ensure button takes full width */
+  max-width: 400px; /* Optional: Set a max-width for better control */
+}
+
+.download-button:hover {
+  background-color: #3333ff;
+}
+
+/* Table container styling */
+.table-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Table styling */
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.details-table th, .details-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.details-table th {
+  background-color: #f4f4f4;
+}
+
+/* Button cell styling */
+.button-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Action button styling */
+.action-button {
+  background: #4d4dff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background: #3333ff;
+}
+
+/* Footer link styling */
+.footer-link {
+  display: block;
+  text-align: center;
+  color: grey;
+  text-decoration: none;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+

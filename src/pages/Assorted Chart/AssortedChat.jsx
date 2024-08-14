@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase"; 
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import "./SalesComparisonChart.css"; 
+import "./AssortedChart.css"; 
 
-const SalesComparisonChart = () => {
+const AssortedChart = () => {
   const [salesData, setSalesData] = useState([]);
 
   useEffect(() => {
@@ -20,13 +20,13 @@ const SalesComparisonChart = () => {
       const endOfYesterday = new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate(), 23, 59, 59, 999);
 
       const todaySalesQuery = query(
-        collection(db, "customerBilling"),
+        collection(db, "billing"),
         where("date", ">=", startOfToday),
         where("date", "<=", endOfToday)
       );
 
       const yesterdaySalesQuery = query(
-        collection(db, "customerBilling"),
+        collection(db, "billing"),
         where("date", ">=", startOfYesterday),
         where("date", "<=", endOfYesterday)
       );
@@ -69,7 +69,7 @@ const SalesComparisonChart = () => {
 
   return (
     <div className="chart-container">
-      <h1 className="chart-header">Customer Bill Sales Comparison</h1>
+      <h1 className="chart-header">Assorted Bill Sales Comparison</h1>
       <ResponsiveContainer width="60%" height={400}>
         <BarChart data={salesData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -90,4 +90,4 @@ const SalesComparisonChart = () => {
   );
 };
 
-export default SalesComparisonChart;
+export default AssortedChart;

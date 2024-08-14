@@ -14,6 +14,7 @@ import GraphComponent from './pages/Chart/SalesComparisonChart';
 import HomePage from './pages/Home/HomePage';
 import Grid from './pages/Grid/Grid';
 import LoginPage from './pages/Login/LoginPage';
+import fetchDataAndGenerateExcel from './pages/DownloadData/DownloadData';
 
 
 
@@ -34,7 +35,13 @@ const App = () => {
       setSelectedProducts([...selectedProducts, { ...product, quantity: 1 }]);
     }
   };
-
+  const handleDownload = async () => {
+    try {
+      await fetchDataAndGenerateExcel('products');
+    } catch (error) {
+      console.error('Error downloading data:', error);
+    }
+  };
   const handleGenerateInvoice = () => {
     const products = selectedProducts.map(product => ({
       ...product,
@@ -52,6 +59,7 @@ const App = () => {
   return (
     
       <div>
+         <button style={{display:"none"}} onClick={handleDownload}>Download Data</button>
       {!isLoginPage && <Navbar />}
         <Routes>
         <Route path="/todaysales" element={<TodaySales />} />

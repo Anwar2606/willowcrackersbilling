@@ -47,7 +47,7 @@ const TodaySales = () => {
 
   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, 'billing', id));
+      await deleteDoc(doc(db, 'customerBilling', id));
       setDetails(prevDetails => prevDetails.filter(detail => detail.id !== id));
       console.log('Document successfully deleted!');
       fetchDetails(); // Fetch details again after deletion
