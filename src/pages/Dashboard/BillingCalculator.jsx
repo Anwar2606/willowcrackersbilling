@@ -222,6 +222,7 @@
             customerPhone,
             customerEmail,
             customerGSTIN,
+            customerPAN,
             date: Timestamp.fromDate(currentDate),
             productsDetails: cart.map(item => ({
               productId: item.productId,

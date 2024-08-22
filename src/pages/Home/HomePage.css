@@ -273,6 +273,8 @@
 .table-container {
   margin-top: 20px;
   width: 100%;
+  position: relative;
+  right:20px;
 }
 
 /* Table styling */
@@ -301,18 +303,22 @@
 
 /* Action button styling */
 .action-button {
-  background: #4d4dff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  margin: 0 5px;
-  cursor: pointer;
+  margin-right: 10px; /* Adjust this value to control the gap */
+  background: none; /* Optional: Remove default button styling */
+  border: none;     /* Optional: Remove default button border */
+  cursor: pointer;  /* Optional: Add cursor pointer for better UX */
+  padding: 5px;     /* Optional: Add padding for better spacing */
 }
 
-.action-button:hover {
-  background: #3333ff;
+.action-button:last-child {
+  margin-right: 0;  /* Remove right margin for the last button */
 }
+
+.action-button i {
+  font-size: 16px;  /* Adjust the icon size if needed */
+  color: #333;      /* Set the icon color */
+}
+
 
 /* Footer link styling */
 .footer-link {
