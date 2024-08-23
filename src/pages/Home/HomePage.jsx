@@ -113,16 +113,26 @@ const Homepage = () => {
   // Reuse existing functions (handleDelete, handleEdit, handleSave, handleDownloadPDF, handleGeneratePDF)
 
 
+  const handleDelete = async (id, collectionName) => {
+    console.log(`Deleting id: ${id} from ${collectionName}`);
 
-  const handleDelete = (id, collectionName) => {
-    if (collectionName === 'customerBilling') {
-      setCustomerDetails(customerDetails.filter(detail => detail.id !== id));
-    } else if (collectionName === 'billing') {
-      setBillingDetails(billingDetails.filter(detail => detail.id !== id));
+    try {
+      const docRef = doc(db, collectionName, id);
+      await deleteDoc(docRef); // Delete the document from Firestore
+
+      if (collectionName === 'customerBilling') {
+        const updatedCustomerDetails = customerDetails.filter(detail => detail.id !== id);
+        setCustomerDetails(updatedCustomerDetails);
+      } else if (collectionName === 'billing') {
+        const updatedBillingDetails = billingDetails.filter(detail => detail.id !== id);
+        setBillingDetails(updatedBillingDetails);
+      } else {
+        console.error(`Unknown collection: ${collectionName}`);
+      }
+    } catch (error) {
+      console.error(`Failed to delete id: ${id} from ${collectionName}`, error);
     }
   };
-  
-  
   
   
   const handleEdit = (detail) => {
@@ -543,9 +553,9 @@ return (
               <button onClick={() => handleGeneratePDF(detail)} className="action-button">
                 <i className="fa fa-download" aria-hidden="true"></i>
               </button>
-              <button onClick={() => handleDelete(detail.id)} className="action-button">
-                <i className="fa fa-trash" aria-hidden="true"></i>
-              </button>
+              <button onClick={() => handleDelete(detail.id, 'customerBilling')} className="action-button">
+                  <i className="fa fa-trash" aria-hidden="true"></i>
+                </button>
             </td>
           </tr>
         ))}
@@ -565,8 +575,8 @@ return (
                 <i className="fa fa-download" aria-hidden="true"></i>
               </button>
               <button onClick={() => handleDelete(detail.id, 'billing')} className="action-button">
-          <i className="fa fa-trash" aria-hidden="true"></i>
-        </button>
+                  <i className="fa fa-trash" aria-hidden="true"></i>
+                </button>
 
             </td>
           </tr>
