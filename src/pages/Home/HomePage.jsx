@@ -114,9 +114,15 @@ const Homepage = () => {
 
 
 
-  const handleDelete = (id) => {
-    setCustomerDetails(customerDetails.filter(detail => detail.id !== id));
+  const handleDelete = (id, collectionName) => {
+    if (collectionName === 'customerBilling') {
+      setCustomerDetails(customerDetails.filter(detail => detail.id !== id));
+    } else if (collectionName === 'billing') {
+      setBillingDetails(billingDetails.filter(detail => detail.id !== id));
+    }
   };
+  
+  
   
   
   const handleEdit = (detail) => {
@@ -558,9 +564,10 @@ return (
               <button onClick={() => handleGeneratePDF(detail)} className="action-button">
                 <i className="fa fa-download" aria-hidden="true"></i>
               </button>
-              <button onClick={() => handleDelete(detail.id)} className="action-button">
-                <i className="fa fa-trash" aria-hidden="true"></i>
-              </button>
+              <button onClick={() => handleDelete(detail.id, 'billing')} className="action-button">
+          <i className="fa fa-trash" aria-hidden="true"></i>
+        </button>
+
             </td>
           </tr>
         ))}
