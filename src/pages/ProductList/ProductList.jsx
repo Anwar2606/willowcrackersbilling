@@ -4,6 +4,7 @@ import { db, storage } from "../firebase";
 import { collection, query, where, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { getDownloadURL, ref, deleteObject } from "firebase/storage";
 import "./ProductList.css";
+import jsPDF from "jspdf";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -48,7 +49,64 @@ const ProductList = () => {
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
-
+  const padSno = (sno) => {
+    return sno.replace(/(\d+)/, (match) => match.padStart(3, '0'));
+  };
+  const downloadPDF = () => {
+    const doc = new jsPDF();
+  
+    // Add title at the top center of the PDF
+    
+    const sortedProducts = [...products].sort((a, b) => padSno(a.sno).localeCompare(padSno(b.sno)));
+  
+    const groupedProducts = sortedProducts.reduce((acc, product) => {
+        if (!acc[product.category]) {
+            acc[product.category] = [];
+        }
+        acc[product.category].push(product);
+        return acc;
+    }, {});
+  
+    let startY = 50; // Start Y position after the contact information
+  
+    Object.keys(groupedProducts).forEach((category) => {
+        // Add category title
+        doc.setFontSize(16);
+        doc.text(category, 14, startY);
+        startY += 10;
+  
+        // Create table for the category
+        const tableColumn = ["S.No", "Name", "Regular Price", "Sales Price", "Category"];
+        const tableRows = [];
+  
+        groupedProducts[category].forEach((product) => {
+            const productData = [
+                product.sno,
+                product.name,
+                `Rs.${product.regularprice.toFixed(2)}`,
+                `Rs.${product.saleprice.toFixed(2)}`,
+                product.category
+            ];
+            tableRows.push(productData);
+        });
+  
+        doc.autoTable({
+            head: [tableColumn],
+            body: tableRows,
+            startY: startY,
+            theme: 'striped',
+            margin: { top: 10 },
+            didDrawPage: function (data) {
+                startY = data.cursor.y + 10;
+            }
+        });
+  
+        // Adjust startY for the next category
+        startY = doc.previousAutoTable.finalY + 10;
+    });
+  
+    doc.save("Product_List.pdf");
+  };
   const toggleDescription = (productId) => {
     const updatedProducts = products.map((product) => {
       if (product.id === productId) {
@@ -170,6 +228,9 @@ const ProductList = () => {
         </button>
         <button className="bulk-upload-button" onClick={handleBulkUploadClick} style={{ position: "relative", left: "610px" }}>
           <i className="fa fa-upload"></i> Bulk Upload
+        </button>
+        <button className="download-button2" onClick={downloadPDF} style={{ position: "relative", left: "620px" }}>
+          <i className="fa fa-download"></i> Download PDF
         </button>
       </div>
       <ul className="product-list">
