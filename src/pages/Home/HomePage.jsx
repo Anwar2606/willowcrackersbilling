@@ -779,8 +779,8 @@ return (
                         <FontAwesomeIcon icon={faSave} aria-hidden="true" />
                       </button>
                     ) : (
-                      <button onClick={() => handleEditClick(detail)} className="action-button">
-                        <FontAwesomeIcon icon={faEdit} aria-hidden="true" />
+                      <button style={{display:"none"}}onClick={() => handleEditClick(detail)} className="action-button">
+                        
                       </button>
                     )}
                     <button onClick={() => handleGeneratePDF(detail)} className="action-button">
