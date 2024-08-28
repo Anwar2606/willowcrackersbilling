@@ -576,233 +576,75 @@ return (
       <p>Loading...</p>
     ) : (
       <div className="table-container">
-        {customerDetails.length === 0 && billingDetails.length === 0 ? (
-          <p>No details recorded on this date.</p>
-        ) : (
-          <table className="details-table">
-            <thead>
-              <tr>
-                <th>Invoice Number</th>
-                <th>Bill</th>
-                <th>Customer Name</th>
-                <th>CGST Amount</th>
-                <th>SGST Amount</th>
-                <th>IGST Amount</th>
-                <th>Total Amount</th>
-                <th>Full Quantity</th> {/* New column */}
-                <th>Action</th>
+      {customerDetails.length === 0 && billingDetails.length === 0 ? (
+        <p>No details recorded on this date.</p>
+      ) : (
+        <table className="details-table">
+          <thead>
+            <tr>
+              <th>Invoice Number</th> {/* Added Invoice Number header */}
+              <th>Bill</th>
+              <th>Customer Name</th>
+              <th>Discount Amount</th>
+              <th>CGST Amount</th>
+              <th>SGST Amount</th>
+              <th>IGST Amount</th>
+              <th>Total Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Render customerBilling collection details */}
+            {customerDetails.map((detail) => (
+              <tr key={detail.id}>
+                <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
+                <td>Customer Bill</td> {/* Collection Name */}
+                <td>{detail.customerName}</td>
+                <td>₹{detail.discountedTotal ? detail.discountedTotal.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.cgstAmount ? detail.cgstAmount.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.sgstAmount ? detail.sgstAmount.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.igstAmount ? detail.igstAmount.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
+                <td>
+                  <button onClick={() => handleGeneratePDF(detail)} className="action-button">
+                    <i className="fa fa-download" aria-hidden="true"></i>
+                  </button>
+                  <button onClick={() => handleDelete(detail.id, 'customerBilling')} className="action-button">
+                      <i className="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {customerDetails.map((detail) => (
-                <tr key={detail.id}>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="text"
-                        value={editedValues.invoiceNumber || ''}
-                        onChange={(e) => handleInputChange(e, 'invoiceNumber')}
-                      />
-                    ) : (
-                      detail.invoiceNumber
-                    )}
-                  </td>
-                  <td>Customer Bill</td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="text"
-                        value={editedValues.customerName || ''}
-                        onChange={(e) => handleInputChange(e, 'customerName')}
-                      />
-                    ) : (
-                      detail.customerName
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.cgstAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'cgstAmount')}
-                      />
-                    ) : (
-                     `₹${Number(detail.cgstAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.sgstAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'sgstAmount')}
-                      />
-                    ) : (
-                      `₹${Number(detail.sgstAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.igstAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'igstAmount')}
-                      />
-                    ) : (
-                      `₹${Number(detail.igstAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.totalAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'totalAmount')}
-                      />
-                    ) : (
-                      `₹${Number(detail.totalAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.quantity || ''}
-                        onChange={(e) => handleInputChange(e, 'quantity')}
-                      />
-                    ) : (
-                      detail.quantity || 0
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <button onClick={() => handleSaveClick(detail.id, 'customer')} className="action-button">
-                        <FontAwesomeIcon icon={faSave} aria-hidden="true" />
-                      </button>
-                    ) : (
-                      <button onClick={() => handleEditClick(detail)} className="action-button">
-                        <FontAwesomeIcon icon={faEdit} aria-hidden="true" />
-                      </button>
-                    )}
-                    <button onClick={() => handleGeneratePDF(detail)} className="action-button">
-                      <FontAwesomeIcon icon={faDownload} aria-hidden="true" />
+            ))}
+            {/* Render billing collection details */}
+            {billingDetails.map((detail) => (
+              <tr key={detail.id}>
+                <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
+                <td>Assorted bill</td> {/* Collection Name */}
+                <td>{detail.customerName}</td>
+                <td>₹{detail.discountedTotal ? detail.discountedTotal.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.cgstAmount ? detail.cgstAmount.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.sgstAmount ? detail.sgstAmount.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.igstAmount ? detail.igstAmount.toFixed(2) : 'N/A'}</td>
+                <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
+                <td>
+                  <button onClick={() => handleGeneratePDF(detail)} className="action-button">
+                    <i className="fa fa-download" aria-hidden="true"></i>
+                  </button>
+               
+    <button onClick={() => handleDelete(detail.id, 'billing')} className="action-button">
+                      <i className="fa fa-trash" aria-hidden="true"></i>
                     </button>
-                    <button onClick={() => handleDelete(detail.id, 'customer')} className="action-button">
-                      <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {billingDetails.map((detail) => (
-                <tr key={detail.id}>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="text"
-                        value={editedValues.invoiceNumber || ''}
-                        onChange={(e) => handleInputChange(e, 'invoiceNumber')}
-                      />
-                    ) : (
-                      detail.invoiceNumber
-                    )}
-                  </td>
-                  <td>Assorted Bill</td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="text"
-                        value={editedValues.customerName || ''}
-                        onChange={(e) => handleInputChange(e, 'customerName')}
-                      />
-                    ) : (
-                      detail.customerName
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.cgstAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'cgstAmount')}
-                      />
-                    ) : (
-                      `₹${Number(detail.cgstAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.sgstAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'sgstAmount')}
-                      />
-                    ) : (
-                     ` ₹${Number(detail.sgstAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.igstAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'igstAmount')}
-                      />
-                    ) : (
-                     ` ₹${Number(detail.igstAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.totalAmount || ''}
-                        onChange={(e) => handleInputChange(e, 'totalAmount')}
-                      />
-                    ) : (
-                      `₹${Number(detail.totalAmount).toFixed(2)}`
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <input
-                        type="number"
-                        value={editedValues.quantity || ''}
-                        onChange={(e) => handleInputChange(e, 'quantity')}
-                      />
-                    ) : (
-                      detail.quantity || 0
-                    )}
-                  </td>
-                  <td>
-                    {editingRow === detail.id ? (
-                      <button onClick={() => handleSaveClick(detail.id, 'billing')} className="action-button">
-                        <FontAwesomeIcon icon={faSave} aria-hidden="true" />
-                      </button>
-                    ) : (
-                      <button style={{display:"none"}}onClick={() => handleEditClick(detail)} className="action-button">
-                        
-                      </button>
-                    )}
-                    <button onClick={() => handleGeneratePDF(detail)} className="action-button">
-                      <FontAwesomeIcon icon={faDownload} aria-hidden="true" />
-                    </button>
-                    <button onClick={() => handleDelete(detail.id, 'billing')} className="action-button">
-                      <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan="7"><strong>Total Quantity:</strong></td>
-                <td><strong>{totalQuantity}</strong></td>
-                <td></td>
+    
+    
+    
+    
+                </td>
               </tr>
-            </tfoot>
-          </table>
-        )}
-      </div>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
     )}
   </div>
 );
