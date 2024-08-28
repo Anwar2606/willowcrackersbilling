@@ -575,76 +575,139 @@ return (
     {loading ? (
       <p>Loading...</p>
     ) : (
-      <div className="table-container">
-      {customerDetails.length === 0 && billingDetails.length === 0 ? (
-        <p>No details recorded on this date.</p>
-      ) : (
-        <table className="details-table">
-          <thead>
-            <tr>
-              <th>Invoice Number</th> {/* Added Invoice Number header */}
-              <th>Bill</th>
-              <th>Customer Name</th>
-              <th>Discount Amount</th>
-              <th>CGST Amount</th>
-              <th>SGST Amount</th>
-              <th>IGST Amount</th>
-              <th>Total Amount</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Render customerBilling collection details */}
-            {customerDetails.map((detail) => (
-              <tr key={detail.id}>
-                <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
-                <td>Customer Bill</td> {/* Collection Name */}
-                <td>{detail.customerName}</td>
-                <td>₹{detail.discountedTotal ? detail.discountedTotal.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.cgstAmount ? detail.cgstAmount.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.sgstAmount ? detail.sgstAmount.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.igstAmount ? detail.igstAmount.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
-                <td>
-                  <button onClick={() => handleGeneratePDF(detail)} className="action-button">
-                    <i className="fa fa-download" aria-hidden="true"></i>
-                  </button>
-                  <button onClick={() => handleDelete(detail.id, 'customerBilling')} className="action-button">
-                      <i className="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                </td>
-              </tr>
-            ))}
-            {/* Render billing collection details */}
-            {billingDetails.map((detail) => (
-              <tr key={detail.id}>
-                <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
-                <td>Assorted bill</td> {/* Collection Name */}
-                <td>{detail.customerName}</td>
-                <td>₹{detail.discountedTotal ? detail.discountedTotal.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.cgstAmount ? detail.cgstAmount.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.sgstAmount ? detail.sgstAmount.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.igstAmount ? detail.igstAmount.toFixed(2) : 'N/A'}</td>
-                <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
-                <td>
-                  <button onClick={() => handleGeneratePDF(detail)} className="action-button">
-                    <i className="fa fa-download" aria-hidden="true"></i>
-                  </button>
+    //   <div className="table-container">
+    //   {customerDetails.length === 0 && billingDetails.length === 0 ? (
+    //     <p>No details recorded on this date.</p>
+    //   ) : (
+    //     <table className="details-table">
+    //       <thead>
+    //         <tr>
+    //           <th>Invoice Number</th> {/* Added Invoice Number header */}
+    //           <th>Bill</th>
+    //           <th>Customer Name</th>
+              
+    //           <th>Total Amount</th>
+    //           <th>Action</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {/* Render customerBilling collection details */}
+    //         {customerDetails.map((detail) => (
+    //           <tr key={detail.id}>
+    //             <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
+    //             <td>Customer Bill</td> {/* Collection Name */}
+    //             <td>{detail.customerName}</td>
+                
+    //             <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
+    //             <td>
+    //               <button onClick={() => handleGeneratePDF(detail)} className="action-button">
+    //                 <i className="fa fa-download" aria-hidden="true"></i>
+    //               </button>
+    //               <button onClick={() => handleDelete(detail.id, 'customerBilling')} className="action-button">
+    //                   <i className="fa fa-trash" aria-hidden="true"></i>
+    //                 </button>
+    //             </td>
+    //           </tr>
+    //         ))}
+    //         {/* Render billing collection details */}
+    //         {billingDetails.map((detail) => (
+    //           <tr key={detail.id}>
+    //             <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
+    //             <td>Assorted bill</td> {/* Collection Name */}
+    //             <td>{detail.customerName}</td>
                
-    <button onClick={() => handleDelete(detail.id, 'billing')} className="action-button">
-                      <i className="fa fa-trash" aria-hidden="true"></i>
-                    </button>
+    //             <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
+    //             <td>
+    //               <button onClick={() => handleGeneratePDF(detail)} className="action-button">
+    //                 <i className="fa fa-download" aria-hidden="true"></i>
+    //               </button>
+               
+    // <button onClick={() => handleDelete(detail.id, 'billing')} className="action-button">
+    //                   <i className="fa fa-trash" aria-hidden="true"></i>
+    //                 </button>
     
     
     
     
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+    //             </td>
+    //           </tr>
+    //         ))}
+    //       </tbody>
+    //     </table>
+    //   )}
+    // </div>
+    <div className="table-container">
+  {customerDetails.length === 0 && billingDetails.length === 0 ? (
+    <p>No details recorded on this date.</p>
+  ) : (
+    <table className="details-table">
+      <thead>
+        <tr>
+          <th>Invoice Number</th> {/* Added Invoice Number header */}
+          <th>Bill</th>
+          <th>Customer Name</th>
+          <th>Total Quantities</th> {/* Updated header */}
+          <th>Total Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {/* Render customerBilling collection details */}
+        {customerDetails.map((detail) => {
+          const totalQuantity = Array.isArray(detail.productDetails)
+            ? detail.productDetails.reduce((acc, product) => acc + (product.quantity || 0), 0)
+            : 0;
+
+  console.log('Total Quantity:', totalQuantity);
+
+          
+          return (
+            <tr key={detail.id}>
+              <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
+              <td>Customer Bill</td> {/* Collection Name */}
+              <td>{detail.customerName}</td>
+              <td>{totalQuantity}</td> {/* Display total quantity */}
+              <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
+              <td>
+                <button onClick={() => handleGeneratePDF(detail)} className="action-button">
+                  <i className="fa fa-download" aria-hidden="true"></i>
+                </button>
+                <button onClick={() => handleDelete(detail.id, 'customerBilling')} className="action-button">
+                  <i className="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          );
+        })}
+        {/* Render billing collection details */}
+        {billingDetails.map((detail) => {
+          const totalQuantity = detail.productDetails
+            ? detail.productDetails.reduce((acc, product) => acc + product.quantity, 0)
+            : 0;
+          
+          return (
+            <tr key={detail.id}>
+              <td>{detail.invoiceNumber}</td> {/* Invoice Number */}
+              <td>Assorted Bill</td> {/* Collection Name */}
+              <td>{detail.customerName}</td>
+              <td>{totalQuantity}</td> {/* Display total quantity */}
+              <td>₹{detail.totalAmount ? detail.totalAmount.toFixed(2) : '0.00'}</td>
+              <td>
+                <button onClick={() => handleGeneratePDF(detail)} className="action-button">
+                  <i className="fa fa-download" aria-hidden="true"></i>
+                </button>
+                <button onClick={() => handleDelete(detail.id, 'billing')} className="action-button">
+                  <i className="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  )}
+</div>
+
     )}
   </div>
 );

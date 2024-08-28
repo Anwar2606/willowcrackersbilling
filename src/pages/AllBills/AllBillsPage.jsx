@@ -34,33 +34,33 @@ const AllBillsPage = () => {
 
     fetchBills();
   }, []);
-  const formatDate = (timestamp) => {
-    let jsDate;
-  
-    if (timestamp instanceof Timestamp) {
-      jsDate = timestamp.toDate();
-    } else if (timestamp instanceof Date) {
-      jsDate = timestamp;
-    } else if (typeof timestamp === 'string') {
-      jsDate = new Date(timestamp);
-    } else {
-      console.error('Unexpected type for date:', typeof timestamp);
-      return 'Invalid Date';
-    }
-  
-    if (isNaN(jsDate.getTime())) {
-      console.error('Invalid date:', jsDate);
-      return 'Invalid Date';
-    }
-  
-    return jsDate.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      timeZone: 'Asia/Kolkata' // Adjust timezone if needed
-    });
-  };
-  
+const formatDate = (timestamp) => {
+  let jsDate;
+
+  if (timestamp instanceof Timestamp) {
+    jsDate = timestamp.toDate();
+  } else if (timestamp instanceof Date) {
+    jsDate = timestamp;
+  } else if (typeof timestamp === 'string') {
+    jsDate = new Date(timestamp);
+  } else {
+    console.error('Unexpected type for date:', typeof timestamp);
+    return 'Invalid Date';
+  }
+
+  if (isNaN(jsDate.getTime())) {
+    console.error('Invalid date:', jsDate);
+    return 'Invalid Date';
+  }
+
+  return jsDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'Asia/Kolkata' // Adjust timezone if needed
+  });
+};
+
   const generatePDF = (detail, copyType) => {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
