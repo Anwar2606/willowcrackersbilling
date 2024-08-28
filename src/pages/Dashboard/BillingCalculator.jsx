@@ -9,6 +9,7 @@
         const [products, setProducts] = useState([]);
         const [filteredProducts, setFilteredProducts] = useState([]);
         const [cart, setCart] = useState([]);
+        const [selectedDate, setSelectedDate] = useState(new Date());
         const [category, setCategory] = useState('');
         let invoiceNumber = ''; 
         const [billingDetails, setBillingDetails] = useState({
@@ -223,7 +224,7 @@
               customerEmail,
               customerGSTIN,
               customerPAN,
-              date: Timestamp.fromDate(currentDate),
+              date: Timestamp.fromDate(selectedDate),
               productsDetails: cart.map(item => ({
                   productId: item.productId,
                   name: item.name,
@@ -657,7 +658,7 @@ doc.save(`invoice_${invoiceNumber}_${copyType}.pdf`);
             customerPhone,
             customerEmail,
             customerGSTIN,
-            date: Timestamp.fromDate(currentDate),
+            date: Timestamp.fromDate(selectedDate),
             productsDetails: cart.map(item => ({
               productId: item.productId,
               name: item.name,
@@ -1166,8 +1167,8 @@ drawPageBorder();
         
 
         const handleDateChange = (event) => {
-          const selectedDate = new Date(event.target.value);
-          setCurrentDate(selectedDate);
+          const newDate = new Date(event.target.value);
+          setSelectedDate(newDate);
         };
 
         return (
@@ -1261,7 +1262,7 @@ drawPageBorder();
                   <input
                     type="date"
                     className="custom-datepicker"
-                    value={currentDate.toISOString().substr(0, 10)} 
+                    value={selectedDate.toISOString().substr(0, 10)} 
                     onChange={handleDateChange}
                   />
                   <br />
