@@ -1192,7 +1192,7 @@ drawPageBorder();
               <option value="FLOWER POTS VARSHINI">FLOWER POTS VARSHINI</option>
               <option value="GROUND CHAKKARS VARSHINI">GROUND CHAKKARS VARSHINI</option>
               <option value="FANCY CHAKKARS ">FANCY CHAKKARS</option>
-              <option value="FMUD POTS MERCURY SPL">FMUD POTS MERCURY  SPL</option>
+              <option value="MUD POTS MERCURY  SPL">MUD POTS MERCURY  SPL</option>
               <option value="T.STARS / CANDLE / PENCIL">T.STARS / CANDLE / PENCIL</option>
               <option value="DIGITAL WALAS">DIGITAL WALAS</option>
               <option value="STARVELL COLOURFUL COLLECTIONS">STARVELL COLOURFUL COLLECTIONS</option>
@@ -1207,7 +1207,7 @@ drawPageBorder();
               <option value="BOMBS">BOMBS</option>
               <option value="MULTIPLE MULTI COLOUR SHOTS">MULTIPLE MULTI COLOUR SHOTS</option>
               <option value="MEGA PREMIUM SINGLE PIPES">MEGA PREMIUM SINGLE PIPES</option>
-              <option value="WILLOW'S FOCUS SPL GIFT BOXES">WILLOW'S FOCUS SPL GIFT BOXES</option>
+              <option value="WILLOW'S FOCUS SPL GIFT BOXES ">WILLOW'S FOCUS SPL GIFT BOXES</option>
       </select>
               <ul>
                 {filteredProducts.map(product => (
