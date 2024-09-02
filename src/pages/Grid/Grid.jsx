@@ -219,30 +219,28 @@ const Grid = () => {
     // Fetch latest invoice number
     const fetchLatestInvoiceNumber = async () => {
       try {
-        const billingQuery = query(collection(db, 'billing'), orderBy('invoiceNumber', 'desc'), limit(1));
-        const customerBillingQuery = query(collection(db, 'customerBilling'), orderBy('invoiceNumber', 'desc'), limit(1));
-        
-        const [billingSnapshot, customerBillingSnapshot] = await Promise.all([
-          getDocs(billingQuery),
-          getDocs(customerBillingQuery)
-        ]);
-
+        // Define query to get the latest invoice from the 'billing' collection
+        const billingQuery = query(
+          collection(db, 'billing'),
+          orderBy('invoiceNumber', 'desc'),
+          limit(1)
+        );
+    
+        // Fetch the latest invoice
+        const billingSnapshot = await getDocs(billingQuery);
         let latestNumber = '';
+    
+        // Check if the snapshot is not empty and get the latest invoice number
         if (!billingSnapshot.empty) {
           latestNumber = billingSnapshot.docs[0].data().invoiceNumber;
         }
-        if (!customerBillingSnapshot.empty) {
-          const customerNumber = customerBillingSnapshot.docs[0].data().invoiceNumber;
-          if (customerNumber > latestNumber) {
-            latestNumber = customerNumber;
-          }
-        }
-        
+    
         setLatestInvoiceNumber(latestNumber); // Set the latest invoice number
       } catch (error) {
-        console.error('Error fetching latest invoice number: ', error);
+        console.error('Error fetching latest invoice number:', error);
       }
     };
+    
 
     fetchNumberOfBillingBills();
     // fetchNumberOfProducts();

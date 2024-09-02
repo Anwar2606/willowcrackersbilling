@@ -659,14 +659,14 @@ doc.save(`invoice_${invoiceNumber}_${copyType}.pdf`);
             customerPhone,
             customerEmail,
             customerGSTIN,
-            date: Timestamp.fromDate(selectedDate),
+           
             productsDetails: cart.map(item => ({
               productId: item.productId,
               name: item.name,
               saleprice: item.saleprice,
               quantity: item.quantity
             })),
-            createdAt: Timestamp.now(),
+            createdAt: Timestamp.fromDate(selectedDate),
             invoiceNumber, // Use the same invoice number
           });
           console.log('Billing details saved successfully in Firestore');
@@ -715,7 +715,10 @@ doc.save(`invoice_${invoiceNumber}_${copyType}.pdf`);
         doc.setTextColor(0, 0, 0);
  doc.setFont('helvetica', 'normal');
  doc.setFontSize(9);
- doc.text(`Date: ${currentDate.toLocaleDateString()}`, 138, 36);
+ doc.setFontSize(9);
+ const formattedDate = selectedDate.toLocaleDateString(); 
+
+doc.text(`Date: ${formattedDate}`, 138, 36);
  doc.setFont('helvetica', 'bold');
  doc.text('GSTIN: 33AEGFS0424L1Z4', 138, 49);
   
