@@ -377,14 +377,25 @@ doc.text(signatureText, signatureX, signatureY);
     }
   };
 
-  const handleDelete = async (id, collectionName) => {
+  const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, collectionName, id));
-      setBills(bills.filter(bill => bill.id !== id));
+      // Delete from 'billing' collection
+      const billingDocRef = doc(db, 'billing', id);
+      await deleteDoc(billingDocRef);
+  
+      // Delete from 'customerBilling' collection
+      const customerBillingDocRef = doc(db, 'customerBilling', id);
+      await deleteDoc(customerBillingDocRef);
+  
+      // Update the state to remove the deleted bill from the UI
+      setBills(prevBills => prevBills.filter(bill => bill.id !== id));
+  
+      console.log(`Document with id ${id} deleted from both billing and customerBilling collections.`);
     } catch (error) {
-      console.error('Error deleting bill: ', error);
+      console.error('Error deleting bill: ', error.message);
     }
   };
+  
   
   return (
     <div className="all-bills-page">
@@ -430,11 +441,11 @@ doc.text(signatureText, signatureX, signatureY);
                     onClick={() => handleDownloadAllPdfs(bill)}
                     style={{ cursor: 'pointer', marginRight: '10px' }}
                   />
-                  <FaTrash
-                    className="delete-icon"
-                    onClick={() => handleDelete(bill.id, bill.collectionName)}
-                    style={{ cursor: 'pointer', color: 'red' }}
-                  />
+                 <FaTrash
+  className="delete-icon"
+  onClick={() => handleDelete(bill.id)} // Now it will delete from both collections
+  style={{ cursor: 'pointer', color: 'red' }}
+/>
                 </td>
               </tr>
             );
