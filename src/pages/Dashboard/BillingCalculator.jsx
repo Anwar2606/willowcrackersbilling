@@ -213,6 +213,11 @@
         return `${Math.floor(amount).toString()}.00`;
     }
     const saveBillingDetails = async (newInvoiceNumber) => {
+      const invoiceNumber = manualInvoiceNumber.trim();
+      if (!invoiceNumber) {
+        alert('Please enter a valid invoice number.');
+        return; // Exit the function if the invoice number is empty
+      }
       const billingDocRef = collection(db, 'billing');
       try {
         await addDoc(billingDocRef, {

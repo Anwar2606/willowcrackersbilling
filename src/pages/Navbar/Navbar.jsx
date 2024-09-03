@@ -18,6 +18,9 @@ const Navbar = () => {
           <Link to="/allbills" className="navbar-link">All Bills</Link>
         </li>
         <li className="navbar-item">
+          <Link to="/invoice" className="navbar-link">Invoice Number</Link>
+        </li>
+        <li className="navbar-item">
           <Link to="/products" className="navbar-link">Products</Link>
         </li>
         

@@ -17,6 +17,7 @@ import LoginPage from './pages/Login/LoginPage';
 import fetchDataAndGenerateExcel from './pages/DownloadData/DownloadData';
 import Edit from './pages/sampleEdit/SampleEdit';
 import AllBillsPage from './pages/AllBills/AllBillsPage';
+import InvoiceNumbersPage from './pages/Invoice Numbers/InvoiceNumbersPage';
 
 
 
@@ -65,6 +66,7 @@ const App = () => {
       {!isLoginPage && <Navbar />}
         <Routes>
         <Route path="/todaysales" element={<TodaySales />} />
+        <Route path="/invoice" element={<InvoiceNumbersPage />} />
           <Route path="/add" element={<AddProduct />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/grid" element={<Grid />} />
