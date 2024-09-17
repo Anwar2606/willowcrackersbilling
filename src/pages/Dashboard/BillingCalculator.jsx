@@ -271,7 +271,7 @@ const generatePDF = (copyType, invoiceNumber) => {
     doc.setFont('helvetica', 'bold');
      doc.text(`INVOICE`, 138, 22);
      doc.text(`${copyType}`,138, 29);
-     doc.text(`Estimate Number: AMSC-${invoiceNumber}-24`, 138, 43);
+     doc.text(`Estimate Number: WC-${invoiceNumber}-24`, 138, 43);
      doc.setTextColor(0, 0, 0);
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(9);

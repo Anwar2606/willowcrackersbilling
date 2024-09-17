@@ -19,6 +19,8 @@ import Edit from './pages/sampleEdit/SampleEdit';
 import AllBillsPage from './pages/AllBills/AllBillsPage';
 import InvoiceNumbersPage from './pages/Invoice Numbers/InvoiceNumbersPage';
 import DownloadBillingData from './pages/Download bill/DownloadBillingData';
+import DownloadFirestoreData from './pages/download/DownloadData';
+import UploadJSON from './pages/UploadFile/UploadJson';
 
 
 
@@ -69,8 +71,10 @@ const App = () => {
         <Route path="/todaysales" element={<TodaySales />} />
         <Route path="/invoice" element={<InvoiceNumbersPage />} />
         <Route path="/downloadbill" element={<DownloadBillingData />} />
+        <Route path="/download" element={<DownloadFirestoreData />} />
           <Route path="/add" element={<AddProduct />} />
           <Route path="/" element={<LoginPage />} />
+          <Route path="/upload" element={<UploadJSON />} />
           <Route path="/grid" element={<Grid />} />
           <Route path="/allbills" element={<AllBillsPage />} />
           <Route path="/graph" element={<GraphComponent />} />
