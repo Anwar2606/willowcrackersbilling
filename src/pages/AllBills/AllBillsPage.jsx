@@ -262,6 +262,7 @@ const formatDate = (createdAt) => {
     item.quantity || 'N/A',
     `Rs.${item.saleprice ? item.saleprice.toFixed(2) : 'N/A'}`,
     `Rs.${item.quantity && item.saleprice ? (item.quantity * item.saleprice).toFixed(2) : 'N/A'}`
+    
   ]);
 
   const totalAmount = detail.totalAmount ? `Rs.${detail.totalAmount.toFixed(2)}` : 'N/A';

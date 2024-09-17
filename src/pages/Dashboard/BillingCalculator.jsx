@@ -586,6 +586,7 @@ textY = checkPageEnd(textY + lineHeight, lineHeight, false);
 doc.text('2. All matters Subject to "Sivakasi" jurisdiction only.', rectFX + rectPadding, textY);
 
 // Add "Authorised Signature" inside the rectangle at the bottom right corner
+
 const authSigX = rectFX + rectFWidth - rectPadding - doc.getTextWidth('Authorised Signature');
 const authSigY = y + rectFHeight - rectPadding;
 doc.setFont('helvetica', 'bold');
