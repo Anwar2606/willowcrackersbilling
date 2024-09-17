@@ -262,12 +262,13 @@ const formatDate = (createdAt) => {
     item.quantity || 'N/A',
     `Rs.${item.saleprice ? item.saleprice.toFixed(2) : 'N/A'}`,
     `Rs.${item.quantity && item.saleprice ? (item.quantity * item.saleprice).toFixed(2) : 'N/A'}`
-    
   ]);
 
   const totalAmount = detail.totalAmount ? `Rs.${detail.totalAmount.toFixed(2)}` : 'N/A';
   const discountedAmount = detail.discountedTotal ? `Rs.${detail.discountedTotal.toFixed(2)}` : 'N/A';
   const grandTotal = detail.grandTotal ? `Rs.${detail.grandTotal.toFixed(2)}` : 'N/A';
+  const cgstAmount = detail.cgstAmount ? `Rs.${detail.cgstAmount.toFixed(2)}` : 'N/A';
+  const sgstAmount = detail.sgstAmount ? `Rs.${detail.sgstAmount.toFixed(2)}` : 'N/A';
 
   doc.autoTable({
     head: [['Product Name','HSN CODE', 'Quantity', 'Price', 'Total Amount']],
@@ -305,6 +306,8 @@ const formatDate = (createdAt) => {
     body: [
       ['Total Amount', totalAmount],
       ['Discounted Amount', discountedAmount],
+      ['CGST(9%)', cgstAmount],
+      ['SGST(9%)', sgstAmount],
       ['Grand Total', grandTotal]
     ],
     startY: doc.autoTable.previous.finalY + 10,
