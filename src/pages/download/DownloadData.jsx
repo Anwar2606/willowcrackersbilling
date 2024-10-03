@@ -4,10 +4,10 @@ import { db } from '../firebase'; // Your Firebase config file
 
 const downloadFirestoreData = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'billing'));
+    const querySnapshot = await getDocs(collection(db, 'customerBilling'));
     const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-    const jsonData = JSON.stringify(data, null, 2); // for JSON download
+    const jsonData = JSON.stringify(data, null, 2); // for JSON downloadp
     triggerDownload(jsonData, 'firestore_data.json');
   } catch (error) {
     console.error("Error fetching Firestore data: ", error);
