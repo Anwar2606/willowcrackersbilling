@@ -275,7 +275,9 @@ const generatePDF = (copyType, invoiceNumber) => {
      doc.setTextColor(0, 0, 0);
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(9);
-doc.text(`Date: ${currentDate.toLocaleDateString()}`, 138, 36);
+const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+doc.text(`Date: ${currentDate.toLocaleDateString('en-GB', options)}`, 138, 36);
+// doc.text(`Date: ${currentDate.toLocaleDateString()}`, 138, 36);
 doc.setFont('helvetica', 'bold');
 doc.text('GSTIN:33AEGFS0424L1Z4', 138, 49);
 
@@ -704,7 +706,13 @@ const CustomerCopy = async () => {
      doc.setTextColor(0, 0, 0);
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(9);
-doc.text(`Date: ${currentDate.toLocaleDateString()}`, 138, 36);
+const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+doc.text(`Date: ${currentDate.toLocaleDateString('en-GB', options)}`, 138, 36);
+
+// doc.text(`Date: ${currentDate.toLocaleDateString()}`, 138, 36);
+// const currentDate = new Date();
+// const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${currentDate.getFullYear()}`;
+// doc.text(`Date: ${formattedDate}`, 138, 36);
 doc.setFont('helvetica', 'bold');
 doc.text('GSTIN:33AEGFS0424L1Z4', 138, 49);
 
