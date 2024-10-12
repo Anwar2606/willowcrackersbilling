@@ -4,7 +4,7 @@ import { db } from '../firebase'; // Your Firebase config file
 
 const downloadFirestoreData = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'customerBilling'));
+    const querySnapshot = await getDocs(collection(db, 'billing'));
     const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
     const jsonData = JSON.stringify(data, null, 2); // for JSON downloadp
