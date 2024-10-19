@@ -1,0 +1,46 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 80%; /* You can adjust the width */
+    max-width: 800px; /* Optional: limit the width */
+    height: auto; /* Height will adjust based on content */
+    max-height: 80vh; /* Max height of the modal (80% of viewport height) */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%; /* Ensure content does not exceed the modal height */
+}
+
+.modal-content input {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%; /* Make inputs take up the full width */
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Optional: Close button */
+.modal-content button.close-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+}

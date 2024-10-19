@@ -1,4 +1,4 @@
-.table-container {
+/* .table-container {
   margin: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -121,7 +121,7 @@
   position: relative;
   z-index: 1;
 }
-/* Style for the date picker container */
+
 .custom-date {
   padding: 10px;
   border: 1px solid #ccc;
@@ -134,7 +134,7 @@
   left: 20px;
 }
 
-/* Style for the date picker input field */
+
 .custom-date input {
   border: none;
   outline: none;
@@ -144,16 +144,15 @@
   transition: all 0.3s ease;
 }
 
-/* Hover effect for the date picker input field */
+
 .custom-date:hover,
 .custom-date input:hover {
   border-color: #4d79ff;
   box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
 }
 
-/* Style for the date picker popover */
 .custom-date .react-datepicker__triangle {
-  display: none; /* Hides the default triangle */
+  display: none; 
 }
 
 .custom-dater .react-datepicker__header {
@@ -178,82 +177,73 @@
   background-color: rgba(0, 0, 255, 0.1);
 }
 
-/* Optional: Add a subtle animation effect on hover */
 .custom-date:hover .react-datepicker__day {
   transition: background-color 0.3s ease;
 }
-/* Homepage.css */
 
-/* Container for grid layout and overall styling */
-/* Container for grid layout and overall styling */
 .homepage-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the start (left) */
+  align-items: flex-start;
   padding: 20px;
 }
 
-/* Grid container styling */
+
 .grid-container {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Adjust the ratio of columns as needed */
+  grid-template-columns: 2fr 1fr; 
   gap: 20px;
   width: 100%;
-  justify-content: center; /* Center align the grid items horizontally */
+  justify-content: center; 
 }
 
-/* Styling for each chart and progress component */
 .sales-comparison-chart,
 .revenue-progress {
-  background: #ffffff; /* Ensure both have the same background color */
+  background: #ffffff; 
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
-  width: 90%; /* Ensure both take full width of their grid cell */
-  height: 500px; /* Set the same height for both components */
+  width: 90%; 
+  height: 500px; 
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center-align content horizontally */
-  justify-content: center; /* Center-align content vertically */
+  align-items: center; 
+  justify-content: center; 
 }
-/* Container for date and button alignment */
+
 .date-button-container {
   display: flex;
-  align-items: center; /* Align items vertically centered */
-  gap: 10px; /* Space between date picker and button */
-  margin-top: 20px; /* Space above the container */
+  align-items: center;
+  gap: 10px; 
+  margin-top: 20px; 
 }
 
-/* Adjust DatePicker width if needed */
 .custom-date {
-  margin: 0; /* Remove margin to align it properly */
-  max-width: 200px; /* Adjust as needed */
+  margin: 0; 
+  max-width: 200px; 
 }
 
-/* Heading styling */
 .dateTitle {
   margin-top: 20px;
   margin-bottom: 10px;
   color: #333;
   font-size: 24px;
   font-family: 'Arial', sans-serif;
-  text-align: left; /* Align text to the left */
-  width: 100%; /* Ensure heading takes full width of the container */
+  text-align: left; 
+  width: 100%; 
 }
 
-/* DatePicker styling */
 .custom-date {
   margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
-  width: 100%; /* Ensure DatePicker takes full width */
-  max-width: 500px; /* Optional: Set a max-width for better control */
+  width: 100%; 
+  max-width: 500px; 
 }
 
-/* Button styling */
 .download-button {
   margin-top: 10px;
   padding: 10px 20px;
@@ -263,15 +253,15 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  width: 100%; /* Ensure button takes full width */
-  max-width: 400px; /* Optional: Set a max-width for better control */
+  width: 100%; 
+  max-width: 400px;
 }
 
 .download-button:hover {
   background-color: #3333ff;
 }
 
-/* Table container styling */
+
 .table-container {
   margin-top: 20px;
   width: 100%;
@@ -279,7 +269,6 @@
   right:20px;
 }
 
-/* Table styling */
 .details-table {
   width: 100%;
   border-collapse: collapse;
@@ -296,33 +285,30 @@
   background-color: #f4f4f4;
 }
 
-/* Button cell styling */
 .button-cell {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Action button styling */
 .action-button {
-  margin-right: 10px; /* Adjust this value to control the gap */
-  background: none; /* Optional: Remove default button styling */
-  border: none;     /* Optional: Remove default button border */
-  cursor: pointer;  /* Optional: Add cursor pointer for better UX */
-  padding: 5px;     /* Optional: Add padding for better spacing */
+  margin-right: 10px; 
+  background: none; 
+  border: none;    
+  cursor: pointer; 
+  padding: 5px;     
 }
 
 .action-button:last-child {
-  margin-right: 0;  /* Remove right margin for the last button */
+  margin-right: 0; 
 }
 
 .action-button i {
-  font-size: 16px;  /* Adjust the icon size if needed */
-  color: #333;      /* Set the icon color */
+  font-size: 16px; 
+  color: #333;     
 }
 
 
-/* Footer link styling */
 .footer-link {
   display: block;
   text-align: center;
@@ -335,4 +321,144 @@
 .footer-link:hover {
   text-decoration: underline;
 }
+ */
+/* General Styles for the Homepage */
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+/* Grid container styling */
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two columns layout: chart and progress */
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Styling for each chart and progress component */
+.sales-comparison-chart,
+.revenue-progress {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Container */
+.table-container {
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Table Styling */
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.details-table th,
+.details-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.details-table thead {
+  background-color: #4d79ff;
+  color: #fff;
+}
+
+.details-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Button styling */
+.download-button {
+  background-color: #4d79ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 16px;
+  left: 20px;
+}
+
+.download-button:hover {
+  background-color: #3355cc;
+  transform: scale(1.05);
+}
+
+/* Date picker styling */
+.custom-date {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  left: 20px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Stack items vertically on small screens */
+  }
+
+  .download-button {
+    width: 100%; /* Full width button on small screens */
+    margin-left: 0;
+  }
+
+  .custom-date {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .table-container {
+    margin: 10px;
+  }
+
+  .details-table th, .details-table td {
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-container {
+    padding: 10px;
+  }
+
+  .grid-container {
+    gap: 10px; /* Reduce gap between elements on very small screens */
+  }
+
+  .sales-comparison-chart,
+  .revenue-progress {
+    padding: 15px; /* Reduce padding on smaller screens */
+  }
+
+  .download-button {
+    font-size: 0.9em; /* Adjust font size for smaller screens */
+  }
+
+  .custom-date {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .details-table th, .details-table td {
+    padding: 6px; /* Further reduce padding on very small screens */
+  }
+}

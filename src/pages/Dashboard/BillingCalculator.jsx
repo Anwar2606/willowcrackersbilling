@@ -1171,14 +1171,41 @@ return productName.includes(term) || productCode.includes(term);
     let price = product.saleprice;
   
     // Check if this is the specific product that requires manual price entry
-    if (product.name === 'Assorted Crackers') {
-      price = prompt(`Enter price for ${product.name}:`);
-      if (!price) {
-        alert("Price is required.");
-        return;
-      }
-      price = parseFloat(price); // Convert the input to a float number
-    }
+    // if (product.name === 'Assorted Crackers') {
+    //   price = prompt(`Enter price for ${product.name}:`);
+    //   if (!price) {
+    //     alert("Price is required.");
+    //     return;
+    //   }
+    //   price = parseFloat(price); // Convert the input to a float number
+    // }
+    // Prompt for product name and price
+let productName = prompt("Enter product name:");
+if (!productName) {
+  alert("Product name is required.");
+  return;
+}
+
+// If the product name is "Assorted Crackers", proceed to ask for the price
+if (productName === '') {
+  let price = prompt(`Enter price for ${productName}:`);
+  if (!price) {
+    alert("Price is required.");
+    return;
+  }
+  price = parseFloat(price); // Convert the input to a float number
+
+  // Ensure that the price is a valid number
+  if (isNaN(price)) {
+    alert("Invalid price entered.");
+    return;
+  }
+
+  console.log(`Product Name: ${productName}, Price: ${price}`);
+} else {
+  alert(`Product name is not "Assorted Crackers". You entered: ${productName}`);
+}
+
   
     if (existingItem) {
       const updatedCart = cart.map(item =>

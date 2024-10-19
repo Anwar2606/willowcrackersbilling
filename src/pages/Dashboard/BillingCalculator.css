@@ -7,11 +7,13 @@
   font-size: 16px;          /* Increase font size */
   cursor: pointer;          /* Change cursor to pointer */
   transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  text-align: center;       /* Align text to center */
 }
 
 .remove-button:hover {
   background-color: #c0392b; /* Darker red on hover */
 }
+
 .custom-select1 {
   width: 95%;
   padding: 10px;
@@ -22,11 +24,7 @@
   color: #333;
   outline: none;
   transition: border-color 0.3s ease;
-
-  /* For better appearance */
-  -webkit-appearance: none; /* Chrome, Safari, Opera */
-  -moz-appearance: none; /* Firefox */
-  appearance: none;
+  text-align: left; /* Align text to the left */
 }
 
 .custom-select1:focus {
@@ -35,10 +33,13 @@
 
 .custom-select1 option {
   padding: 15px;
+  text-align: left; /* Align option text to left */
 }
+
 .remove-button:active {
   transform: scale(0.95); /* Slightly shrink the button on click */
 }
+
 .billing-calculator {
   display: flex;
   justify-content: space-between;
@@ -46,15 +47,22 @@
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  text-align: center; /* Center align text */
 }
+
 .product-details {
-  display: flex;                  /* Enable flexbox */
-  justify-content: space-between; /* Space out items */
-  align-items: center;            /* Align items vertically center */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  text-align: center; /* Center align text */
 }
+
 .product-list {
   flex: 1;
   overflow: hidden;
+  text-align: center; /* Center align text */
 }
 
 .product-list input[type="text"] {
@@ -62,6 +70,7 @@
   padding: 10px;
   font-size: 16px;
   margin-bottom: 10px;
+  text-align: center; /* Align text to center */
 }
 
 .product-list ul {
@@ -71,6 +80,7 @@
   max-height: 75dvh; 
   overflow-y: auto; 
 }
+
 .product-list li {
   display: flex;
   justify-content: space-between;
@@ -78,6 +88,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  text-align: left; /* Align text to left */
 }
 
 .product-list li button {
@@ -95,11 +106,13 @@
   border-radius: 5px;
   background-color: #f9f9f9;
   overflow: hidden;  
+  text-align: left; /* Align text to left */
 }
 
 .cart h2 {
   font-size: 20px;
   margin-bottom: 10px;
+  text-align: center; /* Center the heading */
 }
 
 .cart ul {
@@ -116,6 +129,7 @@
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
+  text-align: left; /* Align text to left */
 }
 
 .cart .cart-item span {
@@ -130,6 +144,8 @@
 .billing-summary {
   display: flex;
   margin-top: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  text-align: center; /* Center align text */
 }
 
 .billing-details {
@@ -140,8 +156,8 @@
 .billing-details label {
   display: block;
   margin-bottom: 5px;
+  text-align: left; /* Align labels to the left */
 }
-
 
 .billing-details input[type="text"],
 .billing-details select {
@@ -149,12 +165,15 @@
   padding: 8px;
   font-size: 16px;
   margin-bottom: 10px;
+  text-align: left; /* Align text to the left */
 }
+
 .billing-details input[type="number"]{
   width: 93%;
   padding: 8px;
   font-size: 16px;
   margin-bottom: 10px;
+  text-align: left; /* Align text to the left */
 }
 
 .billing-amounts {
@@ -165,6 +184,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  text-align: left; /* Align text to left in the table */
 }
 
 .billing-amounts table td {
@@ -188,11 +208,13 @@ button {
   cursor: pointer;
   font-size: 16px;
   margin-top: 20px;
+  text-align: center; /* Center align button text */
 }
 
 button:hover {
   background-color: #0056b3;
 }
+
 .custom-datepicker {
   border: 1px solid #ccc;
   padding: 10px;
@@ -227,12 +249,14 @@ button:hover {
 .react-datepicker-year-header {
   color: white;
 }
+
 .customer-details {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
   background-color: #f9f9f9;
+  text-align: left; /* Align text to the left */
 }
 
 .customer-details button {
@@ -246,6 +270,7 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-align: center; /* Center align button text */
 }
 
 .customer-details button:hover {
@@ -260,9 +285,80 @@ button:hover {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  text-align: left; /* Align text to the left */
 }
 
 .customer-details input:focus {
   border-color: #007bff;
   outline: none;
 }
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .billing-calculator {
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  .billing-summary {
+    flex-direction: column;
+  }
+
+  .product-details {
+    flex-direction: column;
+  }
+
+  .product-list input[type="text"], .billing-details input[type="text"], .billing-details input[type="number"], .custom-datepicker input {
+    width: 100%;
+    font-size: 14px;
+    text-align: left; /* Align text to left */
+  }
+
+  .product-list ul {
+    max-height: 50vh;
+  }
+
+  .cart ul {
+    max-height: 50vh;
+  }
+
+  .cart h2 {
+    font-size: 18px;
+  }
+
+  .billing-amounts table td {
+    font-size: 14px;
+  }
+
+  button, .customer-details button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .remove-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .custom-select1 {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .product-list input[type="text"], .billing-details input[type="text"], .billing-details input[type="number"] {
+    font-size: 14px;
+  }
+
+  .customer-details input {
+    font-size: 14px;
+  }
+
+  .billing-amounts table td {
+    font-size: 12px;
+  }
+}
+

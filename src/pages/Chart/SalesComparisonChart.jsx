@@ -70,7 +70,7 @@ const SalesComparisonChart = () => {
   return (
     <div className="chart-container">
       <h1 className="chart-header">Customer Bill Sales Comparison</h1>
-      <ResponsiveContainer width="60%" height={400}>
+      <ResponsiveContainer width="100%" height={400}>
         <BarChart data={salesData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
@@ -80,14 +80,15 @@ const SalesComparisonChart = () => {
           <Bar dataKey="Sales" fill="url(#colorSales)" animationDuration={1500} />
           <defs>
             <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.8}/>
+              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.8} />
             </linearGradient>
           </defs>
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
+  
 };
 
 export default SalesComparisonChart;

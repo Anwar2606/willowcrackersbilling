@@ -10,7 +10,7 @@ const UploadJSON = () => {
     setFile(e.target.files[0]);
   };
 
-  // Read and upload JSON to Firestore
+  // Read and upload JSON to Firestore 
   const handleUpload = async () => {
     if (!file) return;
 

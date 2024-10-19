@@ -256,19 +256,30 @@ const formatDate = (createdAt) => {
 
   doc.line(centerX, rectY, centerX, rectY + rectHeight);
 
-  const tableBody = detail.productsDetails.map(item => [
-    item.name || 'N/A',
-    '36041000',
-    item.quantity || 'N/A',
-    `Rs.${item.saleprice ? item.saleprice.toFixed(2) : 'N/A'}`,
-    `Rs.${item.quantity && item.saleprice ? (item.quantity * item.saleprice).toFixed(2) : 'N/A'}`
-  ]);
-
-  const totalAmount = detail.totalAmount ? `Rs.${detail.totalAmount.toFixed(2)}` : 'N/A';
-  const discountedAmount = detail.discountedTotal ? `Rs.${detail.discountedTotal.toFixed(2)}` : 'N/A';
-  const grandTotal = detail.grandTotal ? `Rs.${detail.grandTotal.toFixed(2)}` : 'N/A';
-  const cgstAmount = detail.cgstAmount ? `Rs.${detail.cgstAmount.toFixed(2)}` : 'N/A';
-  const sgstAmount = detail.sgstAmount ? `Rs.${detail.sgstAmount.toFixed(2)}` : 'N/A';
+  // const tableBody = detail.productsDetails.map(item => [
+  //   item.name || 'N/A',
+  //   '36041000',
+  //   item.quantity || 'N/A',
+  //   `Rs.${item.saleprice ? item.saleprice.toFixed(2) : 'N/A'}`,
+  //   `Rs.${item.quantity && item.saleprice ? (item.quantity * item.saleprice).toFixed(2) : 'N/A'}`
+  // ]);
+  const tableBody = detail.productsDetails.map(item => {
+    const saleprice = typeof item.saleprice === 'string' || typeof item.saleprice === 'number' ? item.saleprice : 0; // Ensure saleprice is a valid number
+    const quantity = typeof item.quantity === 'string' || typeof item.saleprice === 'number' ? item.quantity : 0; // Ensure quantity is a valid number
+  
+    return [
+      item.name || 'N/A',
+      '36041000', // You can replace this with the actual HSN code if needed
+      quantity.toString(), // Convert quantity to string for display
+      `Rs.${saleprice}`.toString(), // Ensure saleprice is a valid number and format it
+      `Rs.${(quantity * saleprice)}`.toString() // Calculate the total amount
+    ];
+  });
+  const totalAmount = detail.totalAmount ? `Rs.${detail.totalAmount}` : 'N/A';
+  const discountedAmount = detail.discountedTotal ? `Rs.${detail.discountedTotal}` : 'N/A';
+  const grandTotal = detail.grandTotal ? `Rs.${detail.grandTotal}` : 'N/A';
+  const cgstAmount = detail.cgstAmount ? `Rs.${detail.cgstAmount}` : 'N/A';
+  const sgstAmount = detail.sgstAmount ? `Rs.${detail.sgstAmount}` : 'N/A';
 
   doc.autoTable({
     head: [['Product Name','HSN CODE', 'Quantity', 'Price', 'Total Amount']],
