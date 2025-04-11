@@ -271,7 +271,7 @@ const generatePDF = (copyType, invoiceNumber) => {
     doc.setFont('helvetica', 'bold');
      doc.text(`INVOICE`, 138, 22);
      doc.text(`${copyType}`,138, 29);
-     doc.text(`Invoice Number: WC-${invoiceNumber}-25`, 138, 43);
+     doc.text(`Invoice Number: WC-${invoiceNumber}`, 138, 43);
      doc.setTextColor(0, 0, 0);
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(9);
@@ -789,7 +789,7 @@ const CustomerCopy = async () => {
     doc.setFont('helvetica', 'bold');
      doc.text(`INVOICE`, 138, 22);
      doc.text(`CUSTOMER COPY`,138, 29);
-     doc.text(`Invoice Number: WC-${invoiceNumber}-25`, 138, 43);
+     doc.text(`Invoice Number: WC-${invoiceNumber}`, 138, 43);
      doc.setTextColor(0, 0, 0);
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(9);
