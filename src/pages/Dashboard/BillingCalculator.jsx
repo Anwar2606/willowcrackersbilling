@@ -271,7 +271,7 @@ const generatePDF = (copyType, invoiceNumber) => {
     doc.setFont('helvetica', 'bold');
      doc.text(`INVOICE`, 138, 22);
      doc.text(`${copyType}`,138, 29);
-     doc.text(`Invoice Number: WC-${invoiceNumber}-24`, 138, 43);
+     doc.text(`Invoice Number: WC-${invoiceNumber}-25`, 138, 43);
      doc.setTextColor(0, 0, 0);
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(9);
@@ -594,9 +594,9 @@ const checkPageEnd = (currentY, additionalHeight, resetY = true) => {
 if (currentY + additionalHeight > pageSizeHeight - borderMargin) { // Ensure it fits within the page
  doc.addPage();
  drawPageBorder();
- currentPage++; // Increment the page number
+ // Increment the page number
  // Apply additional top padding on the new page if it's the second page or later
- return resetY ? (currentPage === 2 ? borderMargin + additionalTopPadding : borderMargin) : currentY; // Apply margin for new page or keep currentY
+ return resetY ? (currentPage === 1 ? borderMargin + additionalTopPadding : borderMargin) : currentY; // Apply margin for new page or keep currentY
 }
 return currentY;
 };
@@ -789,7 +789,7 @@ const CustomerCopy = async () => {
     doc.setFont('helvetica', 'bold');
      doc.text(`INVOICE`, 138, 22);
      doc.text(`CUSTOMER COPY`,138, 29);
-     doc.text(`Invoice Number: WC-${invoiceNumber}-24`, 138, 43);
+     doc.text(`Invoice Number: WC-${invoiceNumber}-25`, 138, 43);
      doc.setTextColor(0, 0, 0);
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(9);

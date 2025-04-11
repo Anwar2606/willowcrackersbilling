@@ -125,7 +125,7 @@ const formatDate = (createdAt) => {
   doc.setTextColor(0, 0, 0);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
-  doc.text(`Invoice Number: WC-${detail.invoiceNumber}-24`, 138, 43);
+  doc.text(`Invoice Number: WC-${detail.invoiceNumber}-25`, 138, 43);
   doc.text(`Date: ${formattedDate}`, 138, 36);
   // doc.text(`Date: ${currentDate.toLocaleDateString()}`, 138, 36);
   doc.setFont('helvetica', 'bold');

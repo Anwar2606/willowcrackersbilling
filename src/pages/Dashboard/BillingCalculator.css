@@ -295,70 +295,70 @@ button:hover {
 
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
-  .billing-calculator {
-    flex-direction: column;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center; /* Center text on smaller screens */
-  }
-
-  .billing-summary {
-    flex-direction: column;
-  }
-
+  .billing-calculator, 
+  .billing-summary, 
   .product-details {
     flex-direction: column;
+    margin: 10px 5px; /* Adjust margin for small devices */
   }
 
-  .product-list input[type="text"], .billing-details input[type="text"], .billing-details input[type="number"], .custom-datepicker input {
+  .product-list input[type="text"], 
+  .billing-details input[type="text"], 
+  .billing-details input[type="number"], 
+  .custom-datepicker input {
     width: 100%;
     font-size: 14px;
-    text-align: left; /* Align text to left */
+    text-align: left; /* Keep text aligned left for readability */
   }
 
-  .product-list ul {
-    max-height: 50vh;
-  }
-
-  .cart ul {
-    max-height: 50vh;
+  .product-list ul, .cart ul {
+    max-height: 40vh; /* Limit height for scrollable sections */
   }
 
   .cart h2 {
-    font-size: 18px;
-  }
-
-  .billing-amounts table td {
-    font-size: 14px;
-  }
-
-  button, .customer-details button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .remove-button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-
-  .custom-select1 {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .product-list input[type="text"], .billing-details input[type="text"], .billing-details input[type="number"] {
-    font-size: 14px;
-  }
-
-  .customer-details input {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .billing-amounts table td {
     font-size: 12px;
   }
+
+  button, .customer-details button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }
 
+@media (max-width: 480px) {
+  .billing-details input, 
+  .billing-details select, 
+  .customer-details input, 
+  .custom-datepicker input {
+    font-size: 12px;
+    padding: 6px; /* Reduce padding for smaller screens */
+  }
+
+  .billing-amounts td {
+    padding: 4px;
+    font-size: 10px; /* Reduce font size further */
+  }
+
+  button {
+    font-size: 10px;
+    padding: 6px 10px;
+    width: 100%; /* Buttons span full width for better tap targets */
+  }
+
+  .product-list ul, .cart ul {
+    max-height: 30vh; /* Further limit scrollable height */
+  }
+
+  .cart h2 {
+    font-size: 14px;
+  }
+
+  .remove-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
